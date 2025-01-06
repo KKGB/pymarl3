@@ -7,13 +7,14 @@ export PYMARL3_CODE_DIR=$(pwd)
 
 # 1. Install StarCraftII
 echo 'Install StarCraftII...'
-cd "$HOME"
-export SC2PATH="$HOME/StarCraftII"
+mkdir "$(pwd)/3rdparty"
+export SC2PATH="$(pwd)/3rdparty/StarCraftII"
 echo 'SC2PATH is set to '$SC2PATH
 if [ ! -d $SC2PATH ]; then
         echo 'StarCraftII is not installed. Installing now ...';
         wget http://blzdistsc2-a.akamaihd.net/Linux/SC2.4.10.zip
-        unzip -P iagreetotheeula SC2.4.10.zip
+        unzip -P iagreetotheeula SC2.4.10.zip -d "$(pwd)/3rdparty"
+        rm -f SC2.4.10.zip
 else
         echo 'StarCraftII is already installed.'
 fi
